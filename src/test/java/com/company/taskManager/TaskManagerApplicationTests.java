@@ -1,6 +1,6 @@
 package com.company.taskManager;
 
-import com.company.taskManager.model.Task;
+import com.company.taskManager.domain.Task;
 import com.company.taskManager.repository.TaskRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class TaskManagerApplicationTests {
+public class TaskManagerApplicationTests {
 
     @Autowired
     private TaskRepository taskRepository;

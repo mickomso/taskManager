@@ -1,7 +1,6 @@
 package com.company.taskManager.mapper;
 
-import com.company.taskManager.model.Task;
-import org.springframework.jdbc.core.RowCallbackHandler;
+import com.company.taskManager.domain.Task;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
