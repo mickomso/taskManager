@@ -6,14 +6,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "task")
 @NoArgsConstructor
 @Getter
 @Setter
 public class Task {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "task_seq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
