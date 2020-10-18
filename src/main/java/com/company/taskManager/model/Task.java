@@ -23,11 +23,11 @@ public class Task {
     @NonNull
     private String description;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @NonNull
     private Date created_on;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date updated_on;
 
     @NonNull
