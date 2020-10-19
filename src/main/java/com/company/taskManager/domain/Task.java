@@ -1,12 +1,14 @@
 package com.company.taskManager.domain;
 
 import lombok.*;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "TASK")
+@DynamicUpdate
 @NoArgsConstructor
 @Getter
 @Setter

@@ -5,6 +5,8 @@ import com.company.taskManager.repository.TaskRepository;
 import com.company.taskManager.service.api.ITaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -34,7 +36,9 @@ public class TaskService implements ITaskService {
     }
 
     @Override
-    public void markAsCompleted(Integer id) {
-        taskRepository.updateCompletedTaskState(id);
+    public void markAsCompleted(Task task) {
+        task.setCompleted(true);
+        task.setUpdated_on(new Date(System.currentTimeMillis()));
+        taskRepository.save(task);
     }
 }

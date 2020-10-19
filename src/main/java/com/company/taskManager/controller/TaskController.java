@@ -1,12 +1,13 @@
 package com.company.taskManager.controller;
 
 import com.company.taskManager.domain.Task;
-import com.company.taskManager.exceptions.ResourceNotFoundException;
 import com.company.taskManager.service.impl.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 public class TaskController {
@@ -29,19 +30,20 @@ public class TaskController {
     }
 
     @DeleteMapping(value = "/tasks/{id}")
-    public void deleteTask(@PathVariable Integer id) {
-        Task taskFound = taskService.findTaskById(id).orElseThrow(() -> new ResourceNotFoundException("No task found with id = " + id));
-        taskService.deleteTaskById(taskFound.getId());
+    public void deleteTask(@PathVariable(value = "id") Integer id) {
+        Optional<Task> taskFound = taskService.findTaskById(id);
+        if (taskFound != null) {
+            taskService.deleteTaskById(taskFound.get().getId());
+        }
     }
 
-    // TODO Realizar SQL Update correctamente por @Query o por @NamedQuery
-    @PutMapping(value = "/tasks/completed/{id}")
-    public ResponseEntity<Integer> markAsCompleted(@PathVariable Integer id) {
-        Task taskFound = taskService.findTaskById(id).orElseThrow(() -> new ResourceNotFoundException("No task found with id = " + id));
-        if (taskFound.isCompleted()) {
-            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+    @PutMapping(value = "/tasks/update/{id}",
+            consumes = "application/json",
+            produces = "application/json")
+    public void markAsFinished(@PathVariable(value = "id") Integer id) {
+        Optional<Task> taskFound = taskService.findTaskById(id);
+        if (taskFound != null) {
+            taskService.markAsCompleted(taskFound.get());
         }
-        taskService.markAsCompleted(id);
-        return new ResponseEntity<>(id, HttpStatus.OK);
     }
 }

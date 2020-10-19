@@ -11,5 +11,5 @@ public interface ITaskService {
     public Optional<Task> findTaskById(Integer id);
     public Task createNewTask(Task task);
     public void deleteTaskById(Integer id);
-    public void markAsCompleted(Integer id);
+    public void markAsCompleted(Task task);
 }
