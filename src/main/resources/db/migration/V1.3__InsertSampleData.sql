@@ -4,7 +4,7 @@ DELETE FROM PUBLIC.USER;
 
 -- Adding registers to User Table
 INSERT INTO PUBLIC.USER(id,name,email,created_on) values (NEXTVAL('USER_SEQ'),'Alfredo', 'alfredo@mail.com', now());
-INSERT INTO PUBLIC.USER(id,name,email,created_on) values (NEXTVAL('USER_SEQ'),'Mario', 'mario@mail.com', now());
+INSERT INTO PUBLIC.USER(id,name,email,created_on) values (NEXTVAL('USER_SEQ'),'Mario', 'Susana@mail.com', now());
 INSERT INTO PUBLIC.USER(id,name,email,created_on) values (NEXTVAL('USER_SEQ'),'Susana', 'susana@mail.com', now());
 
 -- Adding registers to Task Table

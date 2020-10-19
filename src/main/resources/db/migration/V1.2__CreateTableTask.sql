@@ -6,5 +6,6 @@ CREATE TABLE IF NOT EXISTS PUBLIC.Task (
    description VARCHAR(255) NOT NULL,
    created_on DATE NOT NULL,
    updated_on DATE,
-   completed boolean
+   completed boolean,
+   user_id INT
 );

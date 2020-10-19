@@ -1,3 +1,0 @@
-INSERT INTO PUBLIC.TASK(id,title,description,created_on,updated_on,completed) values (NEXTVAL('TASK_SEQ'),'Demo title 1', 'Demo description 1', now(), null, false );
-INSERT INTO PUBLIC.TASK(id,title,description,created_on,updated_on,completed) values (NEXTVAL('TASK_SEQ'),'Demo title 2', 'Demo description 2', now(), null, false );
-INSERT INTO PUBLIC.TASK(id,title,description,created_on,updated_on,completed) values (NEXTVAL('TASK_SEQ'),'Demo title 3', 'Demo description 3', now(), null, false );

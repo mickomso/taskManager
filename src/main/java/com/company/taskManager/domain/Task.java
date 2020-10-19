@@ -10,6 +10,8 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
+@EqualsAndHashCode
 public class Task {
 
     @Id
@@ -17,22 +19,27 @@ public class Task {
     private int id;
 
     @NonNull
+    @Column(name = "title", nullable = false)
     private String title;
 
     @NonNull
+    @Column(name = "description", nullable = false)
     private String description;
 
     @Temporal(TemporalType.TIMESTAMP)
     @NonNull
+    @Column(name = "created_on", nullable = false)
     private Date created_on;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated_on", insertable = false)
     private Date updated_on;
 
     @NonNull
+    @Column(name = "completed", nullable = false)
     private boolean completed;
 
-    public Task(@NonNull String title, @NonNull String description, @NonNull Date created_on, @NonNull boolean completed) {
+    public Task(String title, String description, Date created_on, boolean completed) {
         this.title = title;
         this.description = description;
         this.created_on = created_on;
