@@ -4,6 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+/**
+ *  Class for expressing validation problems during REST calls.
+ *
+ * @author Miguel Company
+ */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor

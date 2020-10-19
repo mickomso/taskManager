@@ -4,8 +4,7 @@ CREATE TABLE IF NOT EXISTS PUBLIC.Task (
    id INT AUTO_INCREMENT PRIMARY KEY,
    title VARCHAR(255) NOT NULL,
    description VARCHAR(255) NOT NULL,
-   created_on DATE NOT NULL,
+   created_on DATE DEFAULT CURRENT_TIMESTAMP(),
    updated_on DATE,
-   completed boolean,
-   user_id INT
+   completed boolean DEFAULT FALSE
 );

@@ -3,12 +3,19 @@ package com.company.taskManager.controller;
 import com.company.taskManager.domain.Task;
 import com.company.taskManager.service.impl.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.Optional;
 
+/**
+ * Task Controller to handle REST calls.
+ *
+ * @author Miguel Company
+ */
 @RestController
 public class TaskController {
 
@@ -21,28 +28,24 @@ public class TaskController {
     }
 
     @PostMapping(value = "/tasks", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Task> createTask(@RequestBody Task task) {
+    public ResponseEntity<Task> createTask(@Validated @RequestBody Task task) {
         Task savedTask = taskService.createNewTask(task);
-        if (savedTask == null) {
-            return ResponseEntity.status(500).build();
-        }
-        return ResponseEntity.ok(savedTask);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(savedTask.getId()).toUri();
+        return ResponseEntity.created(location).build();
     }
 
     @DeleteMapping(value = "/tasks/{id}")
     public void deleteTask(@PathVariable(value = "id") Integer id) {
         Optional<Task> taskFound = taskService.findTaskById(id);
-        if (taskFound != null) {
+        if (taskFound.isPresent()) {
             taskService.deleteTaskById(taskFound.get().getId());
         }
     }
 
-    @PutMapping(value = "/tasks/update/{id}",
-            consumes = "application/json",
-            produces = "application/json")
-    public void markAsFinished(@PathVariable(value = "id") Integer id) {
+    @PutMapping(value = "/tasks/markAsCompleted/{id}")
+    public void markAsCompleted(@PathVariable(value = "id") Integer id) {
         Optional<Task> taskFound = taskService.findTaskById(id);
-        if (taskFound != null) {
+        if (taskFound.isPresent()) {
             taskService.markAsCompleted(taskFound.get());
         }
     }

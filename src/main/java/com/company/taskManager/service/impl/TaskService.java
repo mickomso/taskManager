@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.Optional;
 
+/**
+ * Task Service implementation.
+ *
+ * @author Miguel Company
+ */
 @Service
 public class TaskService implements ITaskService {
 
@@ -40,5 +45,10 @@ public class TaskService implements ITaskService {
         task.setCompleted(true);
         task.setUpdated_on(new Date(System.currentTimeMillis()));
         taskRepository.save(task);
+    }
+
+    @Override
+    public void updateTask(Task task) {
+
     }
 }

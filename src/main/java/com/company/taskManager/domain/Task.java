@@ -6,6 +6,11 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Pojo object for the Task entity.
+ *
+ * @author Miguel Company
+ */
 @Entity
 @Table(name = "TASK")
 @DynamicUpdate
@@ -29,22 +34,20 @@ public class Task {
     private String description;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @NonNull
-    @Column(name = "created_on", nullable = false)
+    @Column(name = "created_on", insertable = false)
     private Date created_on;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_on", insertable = false)
     private Date updated_on;
 
-    @NonNull
-    @Column(name = "completed", nullable = false)
+    @Column(name = "completed", insertable = false)
     private boolean completed;
 
-    public Task(String title, String description, Date created_on, boolean completed) {
+    public Task(String title, String description) {
         this.title = title;
         this.description = description;
-        this.created_on = created_on;
-        this.completed = completed;
+        this.created_on = new Date(System.currentTimeMillis());
+        this.completed = false;
     }
 }
