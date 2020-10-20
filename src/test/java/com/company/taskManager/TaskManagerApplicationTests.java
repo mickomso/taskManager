@@ -17,5 +17,4 @@ public class TaskManagerApplicationTests {
     public void contextLoads() throws Exception {
         assertThat(taskController).isNotNull();
     }
-
 }
