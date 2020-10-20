@@ -1,7 +1,7 @@
 package com.company.taskManager.exceptions;
 
 /**
- * Abstract class to encapsulate validation problems during the REST calls.
+ * Abstract class used to encapsulate validation problems during the REST calls.
  *
  * @author Miguel Company
  */

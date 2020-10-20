@@ -2,7 +2,7 @@ package com.company.taskManager.service.impl;
 
 import com.company.taskManager.domain.Task;
 import com.company.taskManager.repository.TaskRepository;
-import com.company.taskManager.service.api.ITaskService;
+import com.company.taskManager.service.api.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.Optional;
  * @author Miguel Company
  */
 @Service
-public class TaskService implements ITaskService {
+public class TaskServiceImpl implements TaskService {
 
     @Autowired
     private TaskRepository taskRepository;
@@ -49,6 +49,13 @@ public class TaskService implements ITaskService {
 
     @Override
     public void updateTask(Task task) {
-
+        Task updatedTask = new Task();
+        updatedTask.setId(task.getId());
+        updatedTask.setTitle(task.getTitle());
+        updatedTask.setDescription(task.getDescription());
+        updatedTask.setCreated_on(task.getCreated_on());
+        updatedTask.setUpdated_on(new Date(System.currentTimeMillis()));
+        updatedTask.setCompleted(task.isCompleted());
+        taskRepository.save(updatedTask);
     }
 }

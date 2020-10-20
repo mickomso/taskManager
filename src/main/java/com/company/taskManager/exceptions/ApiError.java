@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Class for saving relevant information about errors that happen during REST calls.
+ * Class used for saving relevant information about errors that happen during REST calls.
  *
  * @author Miguel Company
  */

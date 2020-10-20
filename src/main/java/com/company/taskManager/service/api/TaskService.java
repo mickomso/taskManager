@@ -5,11 +5,11 @@ import com.company.taskManager.domain.Task;
 import java.util.Optional;
 
 /**
- * Task services interface.
+ * Task Service interface.
  *
  * @author Miguel Company
  */
-public interface ITaskService {
+public interface TaskService {
 
     /**
      * Gets all the existing tasks.
@@ -27,7 +27,7 @@ public interface ITaskService {
     public Optional<Task> findTaskById(Integer id);
 
     /**
-     * Creates a new task and saves it in the database.
+     * Creates a new task and persists it.
      *
      * @param task
      * @return a task if it was created and saved correctly.
@@ -35,7 +35,7 @@ public interface ITaskService {
     public Task createNewTask(Task task);
 
     /**
-     * Removes a task from the database.
+     * Removes a persisted task.
      *
      * @param id
      */
@@ -48,7 +48,7 @@ public interface ITaskService {
     public void markAsCompleted(Task task);
 
     /**
-     * Updates a task information.
+     * Updates a persisted task.
      * @param task
      */
     public void updateTask(Task task);

@@ -1,7 +1,8 @@
 package com.company.taskManager.controller;
 
 import com.company.taskManager.domain.Task;
-import com.company.taskManager.service.impl.TaskService;
+import com.company.taskManager.service.api.TaskService;
+import com.company.taskManager.service.impl.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -37,9 +38,8 @@ public class TaskController {
     @DeleteMapping(value = "/tasks/{id}")
     public void deleteTask(@PathVariable(value = "id") Integer id) {
         Optional<Task> taskFound = taskService.findTaskById(id);
-        if (taskFound.isPresent()) {
-            taskService.deleteTaskById(taskFound.get().getId());
-        }
+        taskService.deleteTaskById(taskFound.get().getId());
+
     }
 
     @PutMapping(value = "/tasks/markAsCompleted/{id}")
@@ -47,6 +47,14 @@ public class TaskController {
         Optional<Task> taskFound = taskService.findTaskById(id);
         if (taskFound.isPresent()) {
             taskService.markAsCompleted(taskFound.get());
+        }
+    }
+
+    @PutMapping(value = "/tasks/{id}")
+    public void updateTask(@PathVariable(value = "id") Integer id, @RequestBody Task task) {
+        Optional<Task> taskFound = taskService.findTaskById(id);
+        if (taskFound.isPresent()) {
+            taskService.updateTask(task);
         }
     }
 }

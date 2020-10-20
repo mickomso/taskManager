@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Task repository that adds functionality to the JPA CrudRepository interface if it is needed.
+ * Task repository that encapsulates the CRUD calls.
  *
  * @author Miguel Company
  */
