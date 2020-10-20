@@ -16,10 +16,10 @@ The project has been developed with JAVA 8 and Spring Boot v2.3.4.
 It consists on an API REST with the typical HTTP crud operations:
 - List all tasks
 - Find a task by its _id_ attribute
-- Create a new one task
-- Delete a task
+- Create a new task
+- Delete an existing task
 - Update an specific field from a task
-- Update an entirily task
+- Update a task
 
 In order to save the data and be able to make changes on it, it has been included on the project an H2 embedded database.
 Moreover, some dummy data is pre-loaded in the database when the project execution starts. 
