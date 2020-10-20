@@ -51,5 +51,5 @@ public interface TaskService {
      * Updates a persisted task.
      * @param task
      */
-    public void updateTask(Task task);
+    public void updateTask(int id, Task task);
 }

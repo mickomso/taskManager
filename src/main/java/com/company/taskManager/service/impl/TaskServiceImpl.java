@@ -48,14 +48,14 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void updateTask(Task task) {
-        Task updatedTask = new Task();
-        updatedTask.setId(task.getId());
-        updatedTask.setTitle(task.getTitle());
-        updatedTask.setDescription(task.getDescription());
-        updatedTask.setCreated_on(task.getCreated_on());
-        updatedTask.setUpdated_on(new Date(System.currentTimeMillis()));
-        updatedTask.setCompleted(task.isCompleted());
-        taskRepository.save(updatedTask);
+    public void updateTask(int id, Task task) {
+        Optional<Task> persistedTask = this.findTaskById(id);
+        if (persistedTask.isPresent()) {
+            persistedTask.get().setTitle(task.getTitle());
+            persistedTask.get().setDescription(task.getDescription());
+            persistedTask.get().setUpdated_on(new Date(System.currentTimeMillis()));
+            persistedTask.get().setCompleted(task.isCompleted());
+            taskRepository.save(persistedTask.get());
+        }
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.validation.ObjectError;
 
 import javax.validation.ConstraintViolation;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -29,7 +30,7 @@ public class ApiError {
     private List<ApiSubError> subErrors;
 
     public ApiError() {
-        timestamp = LocalDateTime.now();
+        timestamp = LocalDateTime.now(ZoneId.of("Europe/Madrid"));
     }
 
     public ApiError(HttpStatus status) {
