@@ -42,7 +42,8 @@ Moreover, some dummy data is pre-loaded in the database when the project executi
 Embedded database link:
 http://localhost:8080/h2
 
-See below the connection details:
+See below the connection details: 
+
 ![H2 connection details](h2-connection.png) 
 
 
