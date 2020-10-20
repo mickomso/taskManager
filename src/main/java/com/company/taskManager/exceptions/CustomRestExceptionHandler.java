@@ -167,7 +167,7 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
      * @param headers
      * @param status
      * @param request
-     * @return
+     * @return the ApiError object
      */
     protected ResponseEntity<Object> handleNoHandlerFoundException(
             NoHandlerFoundException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
@@ -199,7 +199,7 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
      * @param headers
      * @param status
      * @param request
-     * @return
+     * @return the ApiError object
      */
     protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         ApiError apiError = new ApiError(METHOD_NOT_ALLOWED);
