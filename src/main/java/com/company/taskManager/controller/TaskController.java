@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 /**
@@ -48,9 +49,7 @@ public class TaskController {
 
     @PutMapping(value = "/tasks/{id}")
     public void updateTask(@PathVariable(value = "id") Integer id, @RequestBody Task task) {
-        Optional<Task> taskFound = taskService.findTaskById(id);
-        if (taskFound.isPresent()) {
-            taskService.updateTask(id, task);
-        }
+        Task taskFound = taskService.findTaskById(id).orElseThrow(() -> new NoSuchElementException("Element doesn't exist."));
+        taskService.updateTask(id, task);
     }
 }
