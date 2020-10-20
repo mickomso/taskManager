@@ -8,7 +8,7 @@ After loading the zipped project in your preferred IDE, use Maven for compiling 
 mvn clean install
 ```
 
-Run the application once it is already compiled using the IDE's command or button intended for it. For this project it has been used the IntelliJ platform, for example.
+Run the application once it is already compiled using the IDE software. For this project it has been used the IntelliJ platform, for example.
 
 ### **_2. Main specifications_**
 The project has been developed with JAVA 8 and Spring Boot v2.3.4. 
@@ -36,5 +36,3 @@ A Swagger implementation has been developed in order to see all the REST operati
 
 Swagger link:
 http://localhost:8080/swagger-ui.html#
-
-Also, some REST calls launched with Postman has been added to the project.
