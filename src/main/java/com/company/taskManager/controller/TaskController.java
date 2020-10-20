@@ -18,38 +18,40 @@ import java.util.Optional;
  * @author Miguel Company
  */
 @RestController
+@RequestMapping("/api/v1/tasks")
 public class TaskController {
 
     @Autowired
     private TaskService taskService;
 
-    @GetMapping("/tasks")
+    @GetMapping("")
     public Iterable<Task> listTasks() {
         return taskService.findAll();
     }
 
-    @PostMapping(value = "/tasks", consumes = "application/json", produces = "application/json")
+    @PostMapping(value=(""), consumes = "application/json", produces = "application/json")
     public ResponseEntity<Task> createTask(@Validated @RequestBody Task task) {
         Task savedTask = taskService.createNewTask(task);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(savedTask.getId()).toUri();
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping(value = "/tasks/{id}")
+    @DeleteMapping(value = "/{id}")
     public void deleteTask(@PathVariable(value = "id") Integer id) {
         Optional<Task> taskFound = taskService.findTaskById(id);
         taskService.deleteTaskById(taskFound.get().getId());
     }
 
-    @PutMapping(value = "/tasks/completed/{id}")
+    @PutMapping(value = "/{id}")
+    public void updateTask(@PathVariable(value = "id") Integer id, @RequestBody Task task) {
+        Task taskFound = taskService.findTaskById(id).orElseThrow(() -> new NoSuchElementException("Element doesn't exist."));
+        taskService.updateTask(id, task);
+    }
+
+    @PutMapping(value = "/completed/{id}")
     public void markAsCompleted(@PathVariable(value = "id") Integer id) {
         Optional<Task> taskFound = taskService.findTaskById(id);
         taskService.markAsCompleted(taskFound.get());
     }
 
-    @PutMapping(value = "/tasks/{id}")
-    public void updateTask(@PathVariable(value = "id") Integer id, @RequestBody Task task) {
-        Task taskFound = taskService.findTaskById(id).orElseThrow(() -> new NoSuchElementException("Element doesn't exist."));
-        taskService.updateTask(id, task);
-    }
 }

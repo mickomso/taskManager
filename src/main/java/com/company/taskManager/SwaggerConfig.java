@@ -28,8 +28,8 @@ public class SwaggerConfig {
     }
 
     private Predicate<String> taskPaths() {
-        return or(regex("/tasks"),
-                regex("/tasks/.*"));
+        return or(regex("/api/v1/tasks"),
+                regex("/api/v1/tasks/.*"));
     }
 
     private ApiInfo apiInfo() {
