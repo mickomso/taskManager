@@ -7,7 +7,6 @@ After loading the zipped project in your preferred IDE, use Maven for compiling 
 ```
 mvn clean install
 ```
-There aren't any profiles configured.
 
 Run the application once it is already compiled using the IDE's command or button intended for it. For this project it has been used the IntelliJ platform, for example.
 
@@ -19,7 +18,7 @@ It consists on an API REST with the typical HTTP crud operations:
 - Create a new task
 - Delete a task
 - Update an specific field from a task
-- Update an entirily task
+- Update a task
 
 In order to save the data and be able to make changes on it, it has been included on the project an H2 embedded database.
 Moreover, some dummy data is pre-loaded in the database when the project execution starts. 
