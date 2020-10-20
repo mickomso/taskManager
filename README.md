@@ -17,7 +17,7 @@ It consists on an API REST with the typical HTTP crud operations:
 - List all tasks
 - Create a new task
 - Delete a task
-- Update an specific field from a task
+- Update a specific field from a task
 - Update a task
 
 In order to save the data and be able to make changes on it, it has been included on the project an H2 embedded database.
