@@ -7,7 +7,6 @@ After loading the zipped project in your preferred IDE, use Maven for compiling 
 ```
 mvn clean install
 ```
-There aren't any profiles configured.
 
 Run the application once it is already compiled using the IDE's command or button intended for it. For this project it has been used the IntelliJ platform, for example.
 
