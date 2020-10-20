@@ -16,8 +16,7 @@ The project has been developed with JAVA 8 and Spring Boot v2.3.4.
 
 It consists on an API REST with the typical HTTP crud operations:
 - List all tasks
-- Find a task by its _id_ attribute
-- Create a new one task
+- Create a new task
 - Delete a task
 - Update an specific field from a task
 - Update an entirily task
